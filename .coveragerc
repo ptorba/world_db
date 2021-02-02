@@ -1,0 +1,3 @@
+[run]
+source = world_db
+omit = world_db/test*
