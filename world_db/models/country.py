@@ -3,7 +3,7 @@ from .meta import Base
 
 
 class Country(Base):
-    __tablename__ = 'country'
+    __tablename__ = "country"
     code = sa.Column(sa.types.String(3), primary_key=True)
     name = sa.Column(sa.types.String, nullable=False)
     continent = sa.Column(sa.types.String, nullable=False)
@@ -22,21 +22,20 @@ class Country(Base):
 
     capital = sa.orm.relationship("City", foreign_keys=[capital_id])
 
-
-    def to_json(self):
+    def to_dict(self):
         return {
-            'code': self.code,
-            'name': self.name,
-            'continent': self.continent,
-            'region': self.region,
-            'surfacearea': self.surfacearea,
-            'indepyear': self.indepyear,
-            'population': self.population,
-            'lifeexpectancy': self.lifeexpectancy,
-            'gnp': str(self.gnp),
-            'gnpold': str(self.gnpold),
-            'localname': self.localname,
-            'governmentform': self.governmentform,
-            'headofstate': self.headofstate,
-            'capital': self.capital.name if self.capital else '',
+            "code": self.code,
+            "name": self.name,
+            "continent": self.continent,
+            "region": self.region,
+            "surfacearea": self.surfacearea,
+            "indepyear": self.indepyear,
+            "population": self.population,
+            "lifeexpectancy": self.lifeexpectancy,
+            "gnp": str(self.gnp),
+            "gnpold": str(self.gnpold),
+            "localname": self.localname,
+            "governmentform": self.governmentform,
+            "headofstate": self.headofstate,
+            "capital": self.capital.name if self.capital else "",
         }

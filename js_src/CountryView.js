@@ -1,27 +1,35 @@
 import React, {useContext, useEffect, useRef} from 'react';
 import MyContext from './context';
 import actions from './actions';
+import CountryCities from './CountryCities';
 
 function CountrySummary({ country }) {
-    console.log('country summary');
+    const entries = Object.entries(country).filter(e => e[0][0] != '_');
     return <ul>
-        {Object.keys(country).map(key =>
-             <li key={key}> {key[0].toUpperCase()}{key.slice(1)}: {country[key]}</li>)}
+        {entries.map(([key,value]) =>
+            <li>{key[0].toUpperCase()}{key.slice(1)}: {value}</li>
+         )}
     </ul>
 }
 
-function CountryCities({country}) {
-    console.log('country cities');
-    return <div>Cities</div>
-}
 
 function CountryLanguages({country}) {
-    console.log('country languages');
-    return <div>Languages</div>
+    if (!country._languages) {
+        return null;
+    }
+    return <ul>
+        {country._languages.map(lang => <Language key={lang.language} lang={lang} />)}
+    </ul>
+}
+
+function Language({lang}) {
+    const isOfficial = lang.isofficial ? "Yes" : "No";
+    return <li>
+        {lang.language}, Is official: {isOfficial}, percentage: {lang.percentage}
+    </li>;
 }
 
 function CountryView({country, countryDisplay}) {
-    console.log('country view');
     if (!country.code) {
         return null;
     }

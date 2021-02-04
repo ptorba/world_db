@@ -9,7 +9,10 @@
     continents: "${request.route_path('continents')}",
     regions: "${request.route_path('regions')}",
     countries: "${request.route_path('countries')}",
-    cities: "${request.route_path('cities')}",
+    cities: "${request.route_path('cities', countrycode=':code')}",
+    languages: "${request.route_path('languages', countrycode=':code')}",
+    city: "${request.route_path('city', id=':id')}",
+    cityCreate: "${request.route_path('city-create', countrycode=':code')}",
   }
 </script>
 
