@@ -16,7 +16,6 @@ function ContinentLink({contName, active}) {
 }
 
 function ContinentsList({continents, selectedContinent}) {
-    console.log('continent list');
     return <div>
         <h2>Select continent</h2>
             <ul class="nav nav-pills nav-fill">

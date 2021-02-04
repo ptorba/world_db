@@ -11,7 +11,6 @@ function CountryLink({country, active}) {
 }
 
 function CountriesList({countries, selectedCountry}) {
-    console.log('countries', countries)
     if (countries.length == 0) {
         return null;
     }
